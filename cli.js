@@ -30,6 +30,10 @@ const { saveDnsConf, reloadDns } = require('./src/dns');
     throw new Error('Not all required config was set (domains, forwarders, username, token)');
   }
 
+  // Set resolve-conf
+  const resolvConf = `nameserver ${forwarders[0]}`;
+  fs.writeFileSync('/etc/resolv.conf', resolvConf);
+
   let somethingChanged = false;
 
   // Update zones
