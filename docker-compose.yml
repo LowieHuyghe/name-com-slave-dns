@@ -1,0 +1,11 @@
+version: "3"
+services:
+  name-com-slave-dns:
+    build: .
+    volumes:
+    - ./data:/data
+    ports:
+      - "53:53/tcp"
+      - "53:53/udp"
+    environment:
+      - TOKEN=mytoken1234567890
